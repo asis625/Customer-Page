@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import PremiumHomepage from './components/PremiumHomepage';
 import NewArrivalsPage from './components/NewArrivalsPage';
+import ShopPage from './components/ShopPage';
+import SearchPage from './components/SearchPage';
 import ProductList from './pages/ProductList';
 import Checkout from './pages/Checkout';
 import Cart from './Cart';
@@ -18,7 +20,10 @@ function App() {
         <Routes>
           <Route path="/" element={<PremiumHomepage />} />
           <Route path="/new-arrivals" element={<NewArrivalsPage />} />
-          <Route path="/shop" element={<ProductList cart={cart} setCart={setCart} />} />
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/category/:category" element={<ShopPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/products" element={<ProductList cart={cart} setCart={setCart} />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout cart={cart} clearCart={clearCart} />} />
           {/* Add more routes as needed */}
