@@ -5,6 +5,8 @@ import PremiumHomepage from './components/PremiumHomepage';
 import NewArrivalsPage from './components/NewArrivalsPage';
 import ShopPage from './components/ShopPage';
 import SearchPage from './components/SearchPage';
+import PremiumCheckout from './components/PremiumCheckout';
+import PremiumCart from './components/PremiumCart';
 import ProductList from './pages/ProductList';
 import Checkout from './pages/Checkout';
 import Cart from './Cart';
@@ -24,8 +26,10 @@ function App() {
           <Route path="/category/:category" element={<ShopPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/products" element={<ProductList cart={cart} setCart={setCart} />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout cart={cart} clearCart={clearCart} />} />
+          <Route path="/cart" element={<PremiumCart />} />
+          <Route path="/cart-simple" element={<Cart />} />
+          <Route path="/checkout" element={<PremiumCheckout />} />
+          <Route path="/checkout-simple" element={<Checkout cart={cart} clearCart={clearCart} />} />
           {/* Add more routes as needed */}
         </Routes>
       </Router>

@@ -34,7 +34,6 @@ const ShopPage = () => {
   const [lastVisible, setLastVisible] = useState(null);
   const [hasMore, setHasMore] = useState(true);
   const [wishlist, setWishlist] = useState([]);
-  const [viewMode, setViewMode] = useState('grid'); // grid, list
   const [gridSize, setGridSize] = useState('medium'); // small, medium, large
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({
@@ -81,19 +80,13 @@ const ShopPage = () => {
     'Nike', 'Adidas', 'Samsung', 'Apple', 'Local Brand', 'Nepali Made'
   ];
 
-  const sizes = [
-    'XS', 'S', 'M', 'L', 'XL', 'XXL', 'Free Size'
-  ];
-
-  const colors = [
-    { value: 'red', label: 'Red', nameNe: 'रातो' },
-    { value: 'blue', label: 'Blue', nameNe: 'निलो' },
-    { value: 'green', label: 'Green', nameNe: 'हरियो' },
-    { value: 'yellow', label: 'Yellow', nameNe: 'पहेंलो' },
-    { value: 'black', label: 'Black', nameNe: 'कालो' },
-    { value: 'white', label: 'White', nameNe: 'सेतो' },
-    { value: 'pink', label: 'Pink', nameNe: 'गुलाबी' }
-  ];
+  // Colors and sizes removed for now to clean up unused variables
+  // const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'Free Size'];
+  // const colors = [
+  //   { value: 'red', label: 'Red', nameNe: 'रातो' },
+  //   { value: 'blue', label: 'Blue', nameNe: 'निलो' },
+  //   // ... more colors
+  // ];
 
   useEffect(() => {
     setFilters(prev => ({ ...prev, category: category || '' }));
@@ -101,7 +94,7 @@ const ShopPage = () => {
 
   useEffect(() => {
     loadProducts(true);
-  }, [filters]);
+  }, [filters]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const loadProducts = async (reset = false) => {
     if (reset) {

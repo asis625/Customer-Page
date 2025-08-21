@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
+import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { HeartIcon, StarIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
 import { db } from '../firebase';
@@ -108,11 +108,11 @@ const SearchPage = () => {
 
   useEffect(() => {
     searchProducts();
-  }, [searchQuery, searchLanguage]);
+  }, [searchQuery, searchLanguage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     applyFilters();
-  }, [products, filters]);
+  }, [products, filters]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getSearchTerms = (query) => {
     const terms = [query.toLowerCase()];

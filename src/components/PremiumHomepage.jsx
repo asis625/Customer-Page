@@ -18,8 +18,6 @@ import Footer from '../components/layout/Footer';
 
 const PremiumHomepage = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
-  const [newArrivals, setNewArrivals] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [wishlist, setWishlist] = useState([]);
   const { addToCart } = useContext(CartContext);
@@ -98,21 +96,21 @@ const PremiumHomepage = () => {
       setFeaturedProducts(items);
     });
 
-    // Fetch new arrivals
-    const newArrivalsQuery = query(
-      collection(db, 'products'),
-      orderBy('createdAt', 'desc'),
-      limit(6)
-    );
+    // Fetch new arrivals - removed for now to clean up unused variables
+    // const newArrivalsQuery = query(
+    //   collection(db, 'products'),
+    //   orderBy('createdAt', 'desc'),
+    //   limit(6)
+    // );
     
-    const unsubscribeNew = onSnapshot(newArrivalsQuery, (snapshot) => {
-      const items = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setNewArrivals(items);
-    });
+    // const unsubscribeNew = onSnapshot(newArrivalsQuery, (snapshot) => {
+    //   const items = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    //   setNewArrivals(items);
+    // });
 
     return () => {
       unsubscribeFeatured();
-      unsubscribeNew();
+      // unsubscribeNew();
     };
   }, []);
 
