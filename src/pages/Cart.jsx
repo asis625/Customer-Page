@@ -2,6 +2,8 @@ import React from "react";
 import { useCart } from "../context/CartContext";
 import CartItem from "../components/CartItem";
 import { useNavigate } from "react-router-dom";
+// Remove the incorrect firAarambha import. Only import Firestore if you use it:
+// import { collection, addDoc } from "firebase/firestore";
 
 export default function Cart() {
   const { cart, updateQty, removeItem, total, clearCart } = useCart();

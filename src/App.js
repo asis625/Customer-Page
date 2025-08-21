@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import PremiumHomepage from './components/PremiumHomepage';
-import NewArrivalsPage from './components/NewArrivalsPage';
+import NewArrivalsSection from './components/NewArrivalsSection'; // <-- updated import
 import ShopPage from './components/ShopPage';
 import SearchPage from './components/SearchPage';
 import PremiumCheckout from './components/PremiumCheckout';
@@ -21,7 +21,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<PremiumHomepage />} />
-          <Route path="/new-arrivals" element={<NewArrivalsPage />} />
+          <Route path="/new-arrivals" element={<NewArrivalsSection />} /> {/* <-- updated usage */}
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/category/:category" element={<ShopPage />} />
           <Route path="/search" element={<SearchPage />} />

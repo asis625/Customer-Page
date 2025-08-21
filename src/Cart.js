@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from './context/CartContext';
 import { db } from './firebase';
-import { collection, addDoc } from 'firebase/firAarambha';
+import { collection, addDoc } from 'firebase/firestore'; // Fixed import
 
 const Cart = () => {
   const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
