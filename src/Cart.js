@@ -3,8 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from './context/CartContext';
 
 const Cart = () => {
-  const { cartItems, removeFromCart, clearCart, getCartTotal } = useCart();
+  const { cartItems, removeFromCart, clearCart } = useCart();
   const navigate = useNavigate();
+
+  const getTotal = () => {
+    return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  };
 
   if (cartItems.length === 0) {
     return (
@@ -45,7 +49,7 @@ const Cart = () => {
           ))}
         </ul>
         <div className="flex justify-between items-center mt-6">
-          <div className="text-xl font-bold">Total: Rs. {getCartTotal()}</div>
+          <div className="text-xl font-bold">Total: Rs. {getTotal()}</div>
           <div className="flex gap-4">
             <button
               onClick={clearCart}
