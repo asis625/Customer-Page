@@ -1,7 +1,7 @@
 // src/CustomerHome.js
 import React, { useEffect, useState } from "react";
 import { collection, query, orderBy, limit, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "./firebase";
 import { Link } from "react-router-dom";
 
 function CustomerHome() {

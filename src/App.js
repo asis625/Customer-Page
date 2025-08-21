@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './CartContext';
-import CustomerHome from './components/CustomerHome';
-import NewArrivalsPage from './NewArrivalsPage';
+import CustomerHome from './CustomerHome';
+import NewArrivalsPage from './components/NewArrivalsPage';
 import Cart from './Cart';
 
 function App() {
