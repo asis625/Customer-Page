@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import CustomerHome from "./CustomerHome"; // adjust path if needed
+import App from "./App";
+import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <CustomerHome />
+    <App />
   </React.StrictMode>
 );

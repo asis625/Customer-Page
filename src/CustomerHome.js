@@ -20,7 +20,7 @@ function CustomerHome() {
     <div
       className="min-h-screen text-white"
       style={{
-        backgroundImage: "url('/E-store background.png')",
+        backgroundImage: "url('/background.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
