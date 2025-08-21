@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { db } from "./firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const ShopPage = () => {
   const { category } = useParams();
-  const products = [
-    { id: 1, name: 'Dhaka Topi', category: 'accessories', price: 499 },
-    { id: 2, name: 'Pashmina Shawl', category: 'shawls', price: 1299 },
-    { id: 3, name: 'Silver Earrings', category: 'accessories', price: 799 },
-    { id: 4, name: 'Cotton Kurta', category: 'clothing', price: 999 },
-    // Add more products as needed
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const querySnapshot = await getDocs(collection(db, "products"));
+      const items = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setProducts(items);
+    }
+    fetchProducts();
+  }, []);
 
   const filteredProducts = category
     ? products.filter(product => product.category === category)
