@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2rem;
+  background: rgba(255, 245, 230, 0.95);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-radius: 0 0 24px 24px;
+  position: relative;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #7c4a03;
+}
+.navbar {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+}
+.navLink {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: #7c4a03;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.navLink:hover {
+  color: #c97c2f;
+}
+.cartIcon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #7c4a03;
+}

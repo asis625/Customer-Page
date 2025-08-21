@@ -1,0 +1,39 @@
+.card {
+  min-width: 180px;
+  max-width: 200px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin: 0 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+.card:hover {
+  box-shadow: 0 4px 20px rgba(201, 124, 47, 0.15);
+}
+.image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+}
+.info {
+  text-align: center;
+}
+.name {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #7c4a03;
+  margin-bottom: 0.3rem;
+}
+.price {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #c97c2f;
+  font-weight: 600;
+}

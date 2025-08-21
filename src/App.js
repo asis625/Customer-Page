@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import PremiumHomepage from './components/PremiumHomepage';
+import CustomerHome from './CustomerHome';
 import NewArrivalsPage from './components/NewArrivalsPage';
 import ShopPage from './components/ShopPage';
 import SearchPage from './components/SearchPage';
@@ -20,7 +21,7 @@ function App() {
     <CartProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<PremiumHomepage />} />
+          <Route path="/" element={<CustomerHome />} />
           <Route path="/new-arrivals" element={<NewArrivalsPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/category/:category" element={<ShopPage />} />
