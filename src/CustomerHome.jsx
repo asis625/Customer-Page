@@ -16,13 +16,14 @@ export default function CustomerHome() {
       }}
     >
       <div style={{
-        background: 'rgba(255, 247, 230, 0.92)',
+        background: 'rgba(255, 247, 230, 0.85)',
         minHeight: '100vh',
         width: '100%',
         position: 'absolute',
         top: 0,
         left: 0,
         zIndex: 1,
+        backdropFilter: 'blur(2px)',
       }} />
       <div style={{ position: 'relative', zIndex: 2 }}>
         <Navbar />
