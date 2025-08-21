@@ -1,0 +1,24 @@
+.searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  max-width: 400px;
+  background: #fff7e6;
+  border-radius: 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 0.5rem 1.2rem;
+}
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1.1rem;
+  font-family: 'Inter', sans-serif;
+  padding: 0.5rem 0.8rem;
+}
+.searchIcon {
+  color: #c97c2f;
+  margin-left: 0.5rem;
+}

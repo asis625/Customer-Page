@@ -3,7 +3,6 @@ import React from 'react';
 export default function BackgroundWatermark() {
   return (
     <div style={{ position: 'absolute', top: 120, left: '50%', transform: 'translateX(-50%)', zIndex: 0, pointerEvents: 'none' }}>
-      {/* Nepal temple SVG illustration (placeholder) */}
       <svg width="320" height="180" viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g opacity="0.13">
           <rect x="0" y="40" width="320" height="100" rx="32" fill="#c97c2f" />
