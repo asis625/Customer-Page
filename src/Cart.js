@@ -1,60 +1,67 @@
-import React, { useContext, useState } from 'react';
-import { CartContext } from './context/CartContext';
-import { db } from './firebase';
-import { collection, addDoc } from 'firebase/firestore'; // Fixed import
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from './context/CartContext';
 
 const Cart = () => {
-  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [address, setAddress] = useState('');
-  const [loading, setLoading] = useState(false);
+  const { cartItems, removeFromCart, clearCart, getCartTotal } = useCart();
+  const navigate = useNavigate();
 
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-
-  const handleCheckout = async () => {
-    if (!name || !email || !address) return alert("Fill all fields");
-    setLoading(true);
-    try {
-      await addDoc(collection(db, "orders"), {
-        customerName: name,
-        customerEmail: email,
-        address,
-        products: cartItems,
-        totalPrice,
-        status: "pending",
-        createdAt: new Date()
-      });
-      alert("Order placed!");
-      clearCart();
-      setName(''); setEmail(''); setAddress('');
-    } catch (err) {
-      console.error(err);
-      alert("Checkout failed");
-    }
-    setLoading(false);
-  };
+  if (cartItems.length === 0) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+        <div className="text-6xl mb-4">🛒</div>
+        <h2 className="text-2xl font-bold mb-2">Your cart is empty</h2>
+        <button
+          onClick={() => navigate('/shop')}
+          className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold"
+        >
+          Continue Shopping
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div style={{ maxWidth: "500px", margin: "50px auto", fontFamily: "sans-serif" }}>
-      <h2>Cart</h2>
-      {cartItems.length === 0 && <p>No items in cart.</p>}
-      {cartItems.map(item => (
-        <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-          <span>{item.name} x {item.quantity}</span>
-          <span>${item.price * item.quantity}</span>
-          <button onClick={() => removeFromCart(item.id)}>Remove</button>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow p-6">
+        <h2 className="text-2xl font-bold mb-6">Your Cart</h2>
+        <ul>
+          {cartItems.map(item => (
+            <li key={item.id} className="flex items-center justify-between py-4 border-b">
+              <div>
+                <div className="font-semibold">{item.name}</div>
+                <div className="text-sm text-gray-500">Qty: {item.quantity}</div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="font-bold">Rs. {item.price * item.quantity}</div>
+                <button
+                  onClick={() => removeFromCart(item.id)}
+                  className="text-red-500 hover:underline"
+                >
+                  Remove
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div className="flex justify-between items-center mt-6">
+          <div className="text-xl font-bold">Total: Rs. {getCartTotal()}</div>
+          <div className="flex gap-4">
+            <button
+              onClick={clearCart}
+              className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg font-semibold"
+            >
+              Clear Cart
+            </button>
+            <button
+              onClick={() => navigate('/checkout')}
+              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold"
+            >
+              Checkout
+            </button>
+          </div>
         </div>
-      ))}
-      {cartItems.length > 0 && (
-        <div>
-          <h3>Total: ${totalPrice}</h3>
-          <input placeholder="Name" value={name} onChange={e => setName(e.target.value)} style={{ width: '100%', marginBottom: '5px' }} />
-          <input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} style={{ width: '100%', marginBottom: '5px' }} />
-          <input placeholder="Address" value={address} onChange={e => setAddress(e.target.value)} style={{ width: '100%', marginBottom: '5px' }} />
-          <button onClick={handleCheckout} disabled={loading}>{loading ? "Placing order..." : "Checkout (COD)"}</button>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

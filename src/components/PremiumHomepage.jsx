@@ -1,16 +1,11 @@
-import React from "react";
-import Navbar from "./Navbar";
-import HeroSection from "./HeroSection";
-import NewArrivalsSection from "./NewArrivalsSection";
-import BackgroundWatermark from "./BackgroundWatermark";
+import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
 
-export default function PremiumHomepage() {
-  return (
-    <div>
-      <Navbar />
-      <BackgroundWatermark />
-      <HeroSection />
-      <NewArrivalsSection />
-    </div>
-  );
-}
+const PremiumHomepage = () => {
+  const { addToCart } = useCart();
+  const [wishlist, setWishlist] = useState([]);
+
+  // ...rest of your PremiumHomepage logic and JSX...
+};
+
+export default PremiumHomepage;
